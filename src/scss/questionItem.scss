@@ -1,0 +1,74 @@
+@import './common.scss';
+
+.questionItem{
+    color: color-black(.87);
+    padding: 15px 20px;
+    margin: 10px;
+    background-color: $color-fff;
+    border-radius: 8px;
+    border: 1px solid color-black(.1);
+    &.questionItemSelected{
+        border-color: color-409EFF();
+    }
+    .questionHeader{
+        display: flex;
+        align-items: center;
+    }
+    .questionType{
+        padding: 0 5px;
+        background-color: color-1F67A1();
+        border-radius: 8px;
+        color: $color-fff;
+    }
+    .questionTime{
+        padding: 0 24px;
+        font-size: 14px;
+        color: color-black(.4);
+    }
+    .questionBtn{
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 22px;
+        >span{
+            margin-left: 15px;
+        }
+    }
+    .questionScore{
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .questionScoreDelete{
+        margin-left: 10px;
+    }
+    .questionLevel{
+        background-color: color-74C991();
+    }
+    .questionTitle{
+        padding: 10px 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .questionOption{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .questionOptionItem{
+        max-width: 30%;
+        display: flex;
+        align-items: center;
+        padding: 10px 0 10px 30px;
+        color: color-666666();
+        span{
+            margin-right: 10px;
+            font-size: 18px;
+        }
+    }
+    .questionOptionPitch{
+        color: color-1F67A1();
+    }
+}

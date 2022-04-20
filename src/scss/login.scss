@@ -1,0 +1,29 @@
+body, #root, .loginPage{
+    height: 100%;
+}
+.loginPage{
+   background-color: #f0f2f5;
+   background-image: url('../assets/images/loginbg_anchor.png');
+   background-repeat: no-repeat;
+   background-position: bottom;
+   background-size: 100% 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   .ant-input{
+       padding: 4px 0 !important;
+   }
+   .ant-btn{
+        width: 100%;
+        border-radius: 4px;
+        background-color: #03c1fd;
+        border-color: transparent;
+    }
+
+}
+.loginArea{
+    width: 540px;
+    padding: 20px;
+    background-color: hsla(0, 0%, 100%, 0.64);
+    border-radius: 12px;
+}

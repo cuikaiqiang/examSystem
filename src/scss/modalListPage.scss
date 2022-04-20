@@ -1,0 +1,106 @@
+@import './common.scss';
+
+.modalListPage{
+    font-size: 12px;
+    font-weight: 400;
+    .modalListItem{
+        // display: flex;
+        // align-items: center;
+        margin-bottom: 20px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    .modalListLeft{
+        // width: 150px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        // justify-content: flex-end;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .modalListRight{
+        padding-left: 10px;
+    }
+    .modalRequired{
+        color: color-ff3738();
+    }
+    .modalListRight{
+        flex-grow: 1;
+        .ant-select, .ant-input-number{
+            width: 100%;
+        }
+        .ant-tree-list{
+            max-height: 150px;
+            overflow: auto;
+        }
+        .ant-input-number-group-wrapper{
+            width: 100%;
+        }
+    }
+    .selectPaper{
+        display: flex;
+        align-items: center;
+    }
+    .selectPaperBtn{
+        margin-left: 15px;
+    }
+    .questionTypeNumber{
+        display: flex;
+    }
+    .questionTypeNumberItem{
+        margin-right: 30px;
+    }
+    .questionTypesItem{
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+    }
+    .questionTypesItemText{
+        flex-shrink: 0;
+        &.questionTypesItemTextPoint{
+            margin-left: 10px;
+        }
+    }
+    .questionTypesItemInput{
+        flex-grow: 1;
+    }
+    .modalInputList{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .modalInputLeft{
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        padding-right: 15px;
+    }
+    .modalInputRight{
+        flex-shrink: 0;
+    }
+    .modalInputListInput{
+        width: 220px;
+        margin: 5px 5px 5px 0;
+    }
+    .modalOptionInputList{
+        align-items: initial;
+        .modalInputRight{
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 12px;
+        }
+        .modalInputLeft{
+            display: block;
+        }
+    }
+    .modalInputLeftItem{
+        display: flex;
+        align-items: center;
+    }
+    .modalOptionInputListInput{
+        width: 100%;
+        margin: 5px 0;
+    }
+}

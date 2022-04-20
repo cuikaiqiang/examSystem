@@ -1,0 +1,44 @@
+
+$color-fff: #fff;
+$color-000: #000;
+
+// 黑色
+@function color-black($option: 1){
+    @return rgba(0, 0, 0, $option);
+}
+
+/** 灰色相关 */
+@function color-666666($option: 1){
+    @return rgba(102, 102, 102, $option);
+}
+
+@function color-E5E5E5($option : 1){
+    @return rgba(229, 229, 229, $option);
+}
+
+/** 蓝色相关 */
+@function color-03c1fd($option: 1){
+    @return rgba(3, 193, 253, $option);
+}
+
+@function color-1F67A1($option: 1){
+    @return rgba(31, 103, 161, $option);
+}
+
+@function color-409EFF($option : 1){
+    @return rgba(64, 158, 255, $option);
+}
+
+/** 绿色相关 */
+@function color-74C991($option: 1){
+    @return rgba(116, 201, 145, $option);
+}
+
+@function color-41bb19($option: 1){
+    @return rgba(65, 187, 25, $option);
+}
+
+/** 红色相关 */
+@function color-ff3738($option: 1){
+    @return rgba(255, 55, 56, $option)
+}

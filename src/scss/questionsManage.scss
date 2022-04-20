@@ -1,0 +1,51 @@
+@import './common.scss';
+.questionsManage{
+    display: flex;
+    height: 100%;
+    // 左侧
+    .questionsManageLeft{
+        width: 250px;
+        padding: 5px;
+        flex-shrink: 0;
+        background-color: $color-fff;
+        overflow: auto;
+        .ant-tree-title{
+            white-space: nowrap;
+        }
+    }
+    // 右侧
+    .questionsManageRight{
+        flex-grow: 1;
+        width: 100%;
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    // 顶部搜索
+    .tableSearchHeader{
+        flex-shrink: 0;
+    }
+    // table表格数据
+    .questionsManageTable{
+        flex-grow: 1;
+        background-color: $color-fff;
+        overflow: auto;
+    }
+    .tableData{
+        padding: 10px;
+    }
+    // 空状态
+    .questionsManageEmpty{
+        padding: 15px;
+        background-color: $color-fff;
+    }
+    // 试题显示区域
+    .questionMain{
+        .tableDataPagination{
+            margin: 0 10px 10px 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+}

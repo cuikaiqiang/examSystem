@@ -1,0 +1,27 @@
+@import './common.scss';
+
+.tableSearchHeader{
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: $color-fff;
+    .tableSearchItem{
+        width: 220px;
+        margin-right: 15px;
+    }
+    .ant-select-lg{
+        font-size: 14px;
+        width: 100%;
+    }
+    .ant-btn{
+        margin-right: 15px;
+        background-color: color-03c1fd();
+        border-color: color-03c1fd();
+        border-radius: 5px;
+    }
+    .ant-picker{
+        width: 100%;
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "easysass.formats":[
+        {
+            "format": "expanded",  // 没有缩进的、扩展的css代码
+        },
+    ],
+    "easysass.compileAfterSave": false,
+    "cSpell.words": [
+        "Sider",
+        "antd"
+    ]
+}

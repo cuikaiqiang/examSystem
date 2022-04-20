@@ -1,0 +1,15 @@
+@import './common.scss';
+
+.tableData{
+    padding: 0 10px;
+    background-color: $color-fff;
+    overflow: hidden;
+    .tableDataPagination{
+        margin: 15px 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .ant-table-thead .ant-table-cell{
+        white-space: nowrap;
+    }
+}
