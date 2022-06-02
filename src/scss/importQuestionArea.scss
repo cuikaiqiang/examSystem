@@ -1,0 +1,35 @@
+@import './common.scss';
+
+.importQuestionArea{
+    .importQuestionItem{
+        margin-bottom: 10px;
+    }
+    .importQuestionTitle{
+        display: flex;
+    }
+    .importQuestionTitleLeft{
+        flex-shrink: 0;
+        font-weight: bold;
+    }
+    .importQuestionAnswer{
+        display: flex;
+        align-items: center;
+    }
+    .importQuestionAnswerLeft{
+        flex-shrink: 0;
+    }
+    .importQuestionAnswerRight{
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .importQuestionAnswerItem{
+        margin: 5px 0;
+        display: flex;
+        align-items: center;
+    }
+    .importQuestionAnswerInput{
+        width: 150px;
+    }
+}

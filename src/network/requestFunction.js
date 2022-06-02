@@ -2,7 +2,7 @@
  * @Author: cuikaiqiang
  * @Date: 2022-03-21 14:37:54
  * @LastEditors: cuikaiqiang
- * @LastEditTime: 2022-04-19 09:08:54
+ * @LastEditTime: 2022-04-21 17:35:26
  * @FilePath: /examSystem/src/network/requestFunction.js
  * @Description:
  */
@@ -17,51 +17,60 @@ const examPrefix = 'exam/';
 export const postExamLogin = async (reqData) => {
     let res = await dataServer.postData(examPrefix + 'user/login', reqData);
     return res;
-}
+};
 
 /**
  * 获取用户权限
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getRoleKey = async(reqData) => {
+export const getRoleKey = async (reqData) => {
     let res = await dataServer.getData(examPrefix + 'operationExam/getRoleKey');
     return res;
-}
+};
 
 /**
  * 获取考试列表
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getExamPageList = async(reqData) => {
-    let res = await dataServer.getData(examPrefix + 'operationExam/page',reqData);
+export const getExamPageList = async (reqData) => {
+    let res = await dataServer.getData(
+        examPrefix + 'operationExam/page',
+        reqData,
+    );
     return res;
-}
+};
 
 /**
  * 获取每周考设置详情数据
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getWeekSettingData = async(reqData) => {
-    let res = await dataServer.getData(examPrefix + 'smart/task/getByTaskId/202106121425562430000002', reqData),
+export const getWeekSettingData = async (reqData) => {
+    let res = await dataServer.getData(
+            examPrefix + 'smart/task/getByTaskId/202106121425562430000002',
+            reqData,
+        ),
         extra = JSON.parse(res.extra);
     res.day = extra.day;
     res.isOpen = res.state == 1;
     res.timer = extra.hour + ':' + extra.minute + ':' + extra.second;
     return res;
-}
+};
 
 /**
  * 获取考试统计数据
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getStatisticsData = async(reqData) => {
-    let res = await dataServer.getData(examPrefix + 'operationExam/getExamInfo',reqData);
+export const getStatisticsData = async (reqData) => {
+    let res = await dataServer.getData(
+        examPrefix + 'operationExam/getExamInfo',
+        reqData,
+    );
     return res;
-}
+};
 
 /**
  * 获取自动分发考试统计数据
@@ -69,10 +78,13 @@ export const getStatisticsData = async(reqData) => {
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getStatisticsAutoData = async(pathParam, reqData) => {
-    let res = await dataServer.getData(examPrefix + 'operationExam/getAutoExamScore/' + pathParam, reqData);
+export const getStatisticsAutoData = async (pathParam, reqData) => {
+    let res = await dataServer.getData(
+        examPrefix + 'operationExam/getAutoExamScore/' + pathParam,
+        reqData,
+    );
     return res;
-}
+};
 
 /**
  * 获取柱状图统计数据
@@ -80,142 +92,250 @@ export const getStatisticsAutoData = async(pathParam, reqData) => {
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getStatisticsHistogramData = async(pathParam, reqData) => {
-    let res = await dataServer.getData(examPrefix + 'operationExam/getStatisticsInfo/' + pathParam, reqData);
+export const getStatisticsHistogramData = async (pathParam, reqData) => {
+    let res = await dataServer.getData(
+        examPrefix + 'operationExam/getStatisticsInfo/' + pathParam,
+        reqData,
+    );
     return res;
-}
+};
 
 /**
  * 获取资质统计数据
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getStatisticsAptitudeData = async(reqData) => {
-    let res = await dataServer.getData(examPrefix + 'operationExam/getJobCertificateStatistics', reqData);
+export const getStatisticsAptitudeData = async (reqData) => {
+    let res = await dataServer.getData(
+        examPrefix + 'operationExam/getJobCertificateStatistics',
+        reqData,
+    );
     return res;
-}
+};
 
 /**
  * 获取试卷列表
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getPaperPageList = async(reqData) => {
-    let res = await dataServer.getData(examPrefix + 'operationExamPaper/page', reqData);
+export const getPaperPageList = async (reqData) => {
+    let res = await dataServer.getData(
+        examPrefix + 'operationExamPaper/page',
+        reqData,
+    );
     return res;
-}
+};
 
 /**
  * 获取试卷详情
  * @param {地址栏上传递的参数} pathParam
  * @returns
  */
-export const getPaperDetails = async(pathParam) => {
-    let res = await dataServer.getData(examPrefix+ 'operationExamPaper/get/' + pathParam);
-    let records = JSON.parse(res.content || '[]'), tableList = [];
-    for(let i = 0; i < records.length; i++){
+export const getPaperDetails = async (pathParam) => {
+    let res = await dataServer.getData(
+        examPrefix + 'operationExamPaper/get/' + pathParam,
+    );
+    let records = JSON.parse(res.content || '[]'),
+        tableList = [];
+    for (let i = 0; i < records.length; i++) {
         tableList.push(disposeQuestionData(records[i]));
     }
     res.tableList = tableList;
     return res;
-}
+};
 
 /**
  * 添加试题点击确定
  * @param {请求参数} reqData
  * @returns
  */
-export const getAddQuestionData = async(reqData) => {
-    let res = await dataServer.postData(examPrefix + 'operationExamPaper/exampaper-add', reqData);
-    let records = res || [], tableList = [];
-    for(let i = 0; i < records.length; i++){
+export const getAddQuestionData = async (reqData) => {
+    let res = await dataServer.postData(
+        examPrefix + 'operationExamPaper/exampaper-add',
+        reqData,
+    );
+    let records = res || [],
+        tableList = [];
+    for (let i = 0; i < records.length; i++) {
         tableList.push(disposeQuestionData(records[i]));
     }
     return tableList;
-}
+};
 
 /**
  * 获取选中分类下的题型数量
  * @param {全部的数据} modalData
  * #@returns 请求返回结果
  */
-export const getQuestionTypesNumber = async(modalData) => {
+export const getQuestionTypesNumber = async (modalData) => {
     // 获取等级数据
-    let levels = modalData.levels || [], reqLevels = '',
+    let levels = modalData.levels || [],
+        reqLevels = '',
         questionCategoryList = modalData.questionCategoryList || []; // 获取选择的分类数据
     // 将等级格式化为后台需要的格式
-    if(levels && levels.length != 0){
+    if (levels && levels.length != 0) {
         reqLevels = levels[0] + '$' + levels[1];
     }
-    let res = await dataServer.postData(examPrefix + 'operationQuestion/getQuestionCountByCategoryIds?levels=' + reqLevels, questionCategoryList) || [],
+    let res =
+            (await dataServer.postData(
+                examPrefix +
+                    'operationQuestion/getQuestionCountByCategoryIds?levels=' +
+                    reqLevels,
+                questionCategoryList,
+            )) || [],
         resList = [];
-    for(let i = 0; i < res.length; i++){
+    for (let i = 0; i < res.length; i++) {
         let resItem = res[i];
         resList[resItem.questionTypeId] = resItem.num;
     }
-    return resList
-}
+    return resList;
+};
 
 /**
  * 获取试题分类树
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getClassifyTree = async(reqData) => {
-    let res = await dataServer.getData(examPrefix + 'questionType/getQuestionTreeListByParentId/' + (reqData || 0));
+export const getClassifyTree = async (reqData) => {
+    let res = await dataServer.getData(
+        examPrefix +
+            'questionType/getQuestionTreeListByParentId/' +
+            (reqData || 0),
+    );
     return res;
-}
+};
 
 /**
  * 获取试题分类列表
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getClassifyList = async(reqData) => {
-    let res = await dataServer.getData(examPrefix + 'questionType/children', reqData);
+export const getClassifyList = async (reqData) => {
+    let res = await dataServer.getData(
+        examPrefix + 'questionType/children',
+        reqData,
+    );
     return res || [];
-}
+};
 
 /**
  * 获取是分类详情
  * @param {地址栏上传递的参数} pathParam
  * @returns 请求返回结果
  */
-export const getClassifyDetails = async(pathParam) => {
-    let res = await dataServer.getData(examPrefix + 'questionType/get/' + pathParam, {});
+export const getClassifyDetails = async (pathParam) => {
+    let res = await dataServer.getData(
+        examPrefix + 'questionType/get/' + pathParam,
+        {},
+    );
     res.isDel = res.isDel ? 1 : 0;
     return res;
-}
+};
+
+/**
+ * 格式化答案数据
+ * @param {试题详情} questionData
+ * @returns 处理过的试题详情
+ */
+const formatQuestionAnswer = (questionData) => {
+    questionData.answerCheck = [];
+    // 判断是否存在答案
+    if (questionData.answer) {
+        // 对多选题进行特殊处理
+        if (questionData.questionTypeId == 2) {
+            questionData.answerCheck = questionData.answer.split('');
+            // 对填空题进行特殊处理
+        } else if (questionData.questionTypeId == 4) {
+            questionData.answerFill = JSON.parse(questionData.answer);
+        }
+    }
+    return questionData;
+};
+
+/**
+ * 格式化等级数据
+ * @param {试题详情} questionData
+ * @returns 处理过的试题详情
+ */
+const formatQuestionLevels = (questionData) => {
+    // 判断是否存在等级
+    if (questionData.levels) {
+        // 获取等级数据                 将等级格式化为数组                声明等级数据
+        let levels = questionData.levels || '',
+            levelsList = levels.split(','),
+            levelsData = {};
+        // 循环全部的等级数据
+        for (let i = 0; i < levelsList.length; i++) {
+            // 判断当前数据是否存在
+            if (levelsList[i]) {
+                let dataList = levelsList[i].split('=');
+                levelsData[dataList[0]] = dataList[1];
+            }
+        }
+        questionData.levels = levelsData;
+    }
+    return questionData;
+};
+
+/**
+ * 格式化等级数据
+ * @param {试题详情} questionData
+ * @returns 处理过的试题详情
+ */
+const formatQuestionCategory = (questionData) => {
+    //  判断是否存在题库分类
+    if (questionData.questionCategoryItems) {
+        // 获取题库分类数据
+        let questionCategoryItems = questionData.questionCategoryItems
+                ? questionData.questionCategoryItems.split(',')
+                : [],
+            questionCategoryItemsList = questionCategoryItems.filter(
+                (item) => item != '' && item != undefined && item != null,
+            ); // 过滤出需要的题库数据
+        questionCategoryItemsList = questionCategoryItemsList.map((item) =>
+            Number(item),
+        );
+        questionData.questionCategoryItemsList = questionCategoryItemsList;
+    }
+    return questionData;
+};
 
 /**
  * 获取试题详情
  * @param {地址栏上传递的参数} pathParam
  * @returns 请求返回的结果
  */
-export const getQuestionDetails = async(pathParam) => {
-    let res = await dataServer.getData(examPrefix + 'operationQuestion/get/' + pathParam, {});
-    console.log(res)
-    return res;
-}
+export const getQuestionDetails = async (pathParam) => {
+    let questionData = await dataServer.getData(
+        examPrefix + 'operationQuestion/get/' + pathParam,
+        {},
+    );
+    let content = JSON.parse(questionData.content || '{}');
+    questionData.optionList = content.choiceList;
+    questionData = formatQuestionAnswer(questionData);
+    questionData = formatQuestionLevels(questionData);
+    questionData = formatQuestionCategory(questionData);
+    return questionData;
+};
 
 /**
  * 处理获取到的试题数据
  * @param {当前操作的数据} item
  * @returns 处理过的数据
  */
-const disposeQuestionData = (item) => {
+export const disposeQuestionData = (item) => {
     let content = JSON.parse(item.content), // 获取content数据
         levelsStr = item.levels, // 获取等级数据
         levelsList = levelsStr ? levelsStr.split(',') : [], // 将等级数据格式化
         levels = []; // 显示的等级数据
-    for(let i = 0; i < levelsList.length; i++){
-        if(levelsList[i]){
+    for (let i = 0; i < levelsList.length; i++) {
+        if (levelsList[i]) {
             levels.push(levelsList[i].split('=')[0]);
         }
     }
     item.levels = levels.join('、');
     // 将答案进行格式化处理
-    switch (item.questionTypeId){
+    switch (item.questionTypeId) {
         case 1:
             item.questionTypeName = '单';
             break;
@@ -229,38 +349,43 @@ const disposeQuestionData = (item) => {
         case 4:
             item.questionTypeName = '填空';
             var answer = JSON.parse(item.answer);
-            item.answer = answer.join('、')
-            break
+            item.answer = answer.join('、');
+            break;
     }
     item.content = content;
     // 判断当前是是否存在name
-    if(!item.name){
+    if (!item.name) {
         item.name = content.title;
     }
     return item;
-}
+};
 
 /**
  * 获取试题列表
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const getQuestionList = async(reqData) => {
-    let res = await dataServer.getData(examPrefix + 'operationQuestion/page', reqData),
+export const getQuestionList = async (reqData) => {
+    let res = await dataServer.getData(
+            examPrefix + 'operationQuestion/page',
+            reqData,
+        ),
         records = res.records || [],
         tableList = [];
-    for(let i = 0; i < records.length; i++){
+    for (let i = 0; i < records.length; i++) {
         tableList.push(disposeQuestionData(records[i]));
     }
     return { tableList, total: res.total || 0 };
-}
+};
 
 /**
  * 删除试题列表
  * @param {请求参数} reqData
  * @returns 请求返回结果
  */
-export const deleteQuestions = async(item, callBack) => {
-    let res = await dataServer.getData(examPrefix + 'operationQuestion/delete/' + item.id);
+export const deleteQuestions = async (item, callBack) => {
+    let res = await dataServer.getData(
+        examPrefix + 'operationQuestion/delete/' + item.id,
+    );
     return res;
-}
+};

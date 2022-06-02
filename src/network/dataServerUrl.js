@@ -2,7 +2,7 @@
  * @Author: cuikaiqiang
  * @Date: 2022-03-08 09:24:35
  * @LastEditors: cuikaiqiang
- * @LastEditTime: 2022-04-14 16:39:55
+ * @LastEditTime: 2022-04-21 16:37:24
  * @FilePath: /examSystem/src/network/dataServerUrl.js
  * @Description:
  */
@@ -20,7 +20,13 @@ export const copyPaperPort = examPrefix + 'operationExamPaper/copy'; // 复制�
 export const deletePaperPort = examPrefix + 'operationExamPaper/delete/'; // 删除试卷
 export const createExamClassifyPort = examPrefix + 'questionType/children'; // 专项答题分类
 export const qualificationCategoryPort = examPrefix + 'questionType/special'; // 资格考试类别
-export const questionClassifyPort = examPrefix + 'questionType/getQuestionTreeListPaperByParentId/'; // 题库分类
+export const questionClassifyPort =
+    examPrefix + 'questionType/getQuestionTreeListPaperByParentId/'; // 题库分类
 export const addClassifyPort = examPrefix + 'questionType/add'; // 新增分类
 export const editClassifyPort = examPrefix + 'questionType/update'; // 编辑分类
 export const deleteClassifyPort = examPrefix + 'questionType/delete/'; // 删除题库分类
+export const addQuestionPort = examPrefix + 'operationQuestion/add'; // 新增试题
+export const editQuestionPort = examPrefix + 'operationQuestion/update'; // 更新试题
+export const importQuestionWord = examPrefix + 'wordImport/upLoadFile'; // 导入Word试题
+export const importQuestionExcel =
+    examPrefix + 'operationQuestion/importThenPreview/'; // 导入试题表格
